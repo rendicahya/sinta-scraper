@@ -34,7 +34,7 @@ def worker(author_id, worker_result):
     profile = soup.select('.meta-profile a')
     affil_name = profile[0].text.strip()
     affil_url = profile[0]['href'].strip()
-    affil_id = affil_url.split('/')[-1]
+    affil_id = cast(affil_url.split('/')[-1])
     dept = profile[1].text.strip()
     subjects = [subject.text.strip() for subject in soup.select('.subject-list a')]
 
