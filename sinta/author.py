@@ -47,9 +47,9 @@ def worker(author_id, worker_result):
     stat_soup = soup.select('.stat-table > tbody > tr')
     stats = {}
 
-    for i, name in enumerate(stat_names):
+    for i, stat_name in enumerate(stat_names):
         s = [cast(stat_soup[i].select('td')[j].text.strip()) for j in range(1, 4)]
-        stats[name] = dict(zip(indexers, s))
+        stats[stat_name] = dict(zip(indexers, s))
 
     result_data = {
                       'id': author_id,
@@ -66,3 +66,7 @@ def worker(author_id, worker_result):
                   } | stats
 
     worker_result.append(result_data)
+
+
+if __name__ == '__main__':
+    print(author(6082456, output_format='json', pretty_print=True))
