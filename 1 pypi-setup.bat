@@ -1,0 +1,2 @@
+@py -m build
+@pause
