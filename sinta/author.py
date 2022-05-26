@@ -1,4 +1,3 @@
-import re
 from concurrent.futures import ThreadPoolExecutor
 
 from bs4 import BeautifulSoup
@@ -53,29 +52,17 @@ def worker(author_id, worker_result):
         stats[name] = dict(zip(indexers, s))
 
     result_data = {
-        'id': author_id,
-        'name': name,
-        'url': url,
-        'affiliation': {
-            'id': affil_id,
-            'name': affil_name,
-            'url': affil_url
-        },
-        'department': dept,
-        'subjects': subjects,
-        'score': scores,
-        'stats': stats
-        # 'rank': ranks,
-        # 'scopus': scopus,
-        # 'scholar': scholar,
-        # 'wos': wos,
-        # 'sinta': sinta,
-        # 'books': books,
-        # 'ipr': ipr
-    }
+                      'id': author_id,
+                      'name': name,
+                      'url': url,
+                      'affiliation': {
+                          'id': affil_id,
+                          'name': affil_name,
+                          'url': affil_url
+                      },
+                      'department': dept,
+                      'subjects': subjects,
+                      'score': scores
+                  } | stats
 
     worker_result.append(result_data)
-
-
-if __name__ == '__main__':
-    print(author(6082456, output_format='json', pretty_print=True))
