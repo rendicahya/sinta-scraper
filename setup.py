@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='sinta3-scraper',
-    version='0.0.1',
+    version='0.0.2',
     author='Randy Cahya Wihandika',
     author_email='rendicahya@gmail.com',
     description='Retrieves information from Sinta 3 (https://sinta3.kemdikbud.go.id) via scraping.',
