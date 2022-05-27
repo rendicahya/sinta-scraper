@@ -66,7 +66,3 @@ def worker(author_id, worker_result):
                   } | stats
 
     worker_result.append(result_data)
-
-
-if __name__ == '__main__':
-    print(author(6082456, output_format='json', pretty_print=True))
