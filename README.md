@@ -12,7 +12,7 @@ Dependencies: `beautifulsoup4`, `requests`, `dicttoxml`, `dict2xml`, and `python
 
 ## Importing
 
-`import sinta_scraper as sinta`
+`import sinta`
 
 ## Available Functions
 
