@@ -35,3 +35,7 @@ def cast(string: str):
         return None
     else:
         return string
+
+
+def listify(param):
+    return [param] if type(param) not in [list, tuple] else param
