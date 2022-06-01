@@ -1,5 +1,3 @@
-from concurrent.futures import ThreadPoolExecutor
-
 from bs4 import BeautifulSoup
 from requests import get
 
@@ -7,7 +5,7 @@ from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread
 
 
-def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml', max_workers=None):
+def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
     author_ids = listify(author_ids)
     result = run_thread(worker, author_ids)
 
