@@ -4,24 +4,20 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from util.config import get_config
-from util.utils import format_output, cast, listify
+from util.utils import format_output, cast, listify, run_thread
 
 
 def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml', max_workers=None):
     author_ids = listify(author_ids)
-    worker_result = []
+    result = run_thread(worker, author_ids)
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        for author_id in author_ids:
-            executor.submit(worker, author_id, worker_result)
+    if len(result) == 1:
+        result = result[0]
 
-    if len(worker_result) == 1:
-        worker_result = worker_result[0]
-
-    return format_output(worker_result, output_format, pretty_print, xml_library)
+    return format_output(result, output_format, pretty_print, xml_library)
 
 
-def worker(author_id, worker_result):
+def worker(author_id, worker_result, **kwargs):
     domain = get_config()['domain']
     url = f'{domain}/authors/profile/{author_id}'
     html = get(url)
@@ -64,3 +60,7 @@ def worker(author_id, worker_result):
                   } | stats
 
     worker_result.append(result_data)
+
+
+if __name__ == '__main__':
+    print(author(6082456, output_format='json', pretty_print=True))
