@@ -8,7 +8,7 @@ from util.utils import format_output, cast
 
 
 def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml', max_workers=None):
-    if type(author_ids) is not list and type(author_ids) is not tuple:
+    if type(author_ids) not in [list, tuple]:
         author_ids = [author_ids]
 
     worker_result = []
@@ -39,7 +39,7 @@ def worker(author_id, worker_result):
 
     scores_soup = soup.select('.stat-profile .pr-num')
     score_names = 'overall', '3_years', 'affiliation', 'affiliation_3_years'
-    scores_int = [cast(scores_soup[i].text.strip()) for i in range(4)]
+    scores_int = [cast(scores_soup[i].text) for i in range(4)]
     scores = dict(zip(score_names, scores_int))
 
     stat_names = 'articles', 'citations', 'cited_docs', 'h-index', 'i10-index', 'g-index'
