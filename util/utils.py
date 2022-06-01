@@ -1,11 +1,8 @@
-import json
-
-from dict2xml import dict2xml
-from dicttoxml import dicttoxml
-from string_utils.validation import is_integer, is_decimal
-
-
 def format_output(obj, output_format, pretty_print, xml_library):
+    import json
+    from dict2xml import dict2xml
+    from dicttoxml import dicttoxml
+
     if output_format == 'json':
         json_indent = 4 if pretty_print else None
         output = json.dumps(obj, indent=json_indent)
@@ -25,6 +22,8 @@ def format_output(obj, output_format, pretty_print, xml_library):
 
 
 def cast(string: str):
+    from string_utils.validation import is_integer, is_decimal
+
     string = string.strip()
 
     if is_integer(string):
