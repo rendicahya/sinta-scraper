@@ -47,7 +47,3 @@ def worker(affiliation_id, worker_result, **kwargs):
     }
 
     worker_result.append(result_data)
-
-
-if __name__ == '__main__':
-    print(affiliation(404, output_format='json', pretty_print=True))
