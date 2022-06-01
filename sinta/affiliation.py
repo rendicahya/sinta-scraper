@@ -4,14 +4,12 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from util.config import get_config
-from util.utils import format_output, cast
+from util.utils import format_output, cast, listify
 
 
 def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml',
                 max_workers=None):
-    if type(affiliation_ids) not in [list, tuple]:
-        affiliation_ids = [affiliation_ids]
-
+    affiliation_ids = listify(affiliation_ids)
     worker_result = []
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:

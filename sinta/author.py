@@ -4,13 +4,11 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from util.config import get_config
-from util.utils import format_output, cast
+from util.utils import format_output, cast, listify
 
 
 def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml', max_workers=None):
-    if type(author_ids) not in [list, tuple]:
-        author_ids = [author_ids]
-
+    author_ids = listify(author_ids)
     worker_result = []
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
