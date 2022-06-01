@@ -1,20 +1,13 @@
-from concurrent.futures import ThreadPoolExecutor
-
 from bs4 import BeautifulSoup
 from requests import get
 
 from util.config import get_config
-from util.utils import format_output, cast, listify
+from util.utils import format_output, cast, listify, run_thread
 
 
-def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml',
-                max_workers=None):
+def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
     affiliation_ids = listify(affiliation_ids)
-    worker_result = []
-
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        for affiliation_id in affiliation_ids:
-            executor.submit(worker, affiliation_id, worker_result)
+    worker_result = run_thread(worker, affiliation_ids)
 
     if len(worker_result) == 1:
         worker_result = worker_result[0]
@@ -22,7 +15,7 @@ def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, 
     return format_output(worker_result, output_format, pretty_print, xml_library)
 
 
-def worker(affiliation_id, worker_result):
+def worker(affiliation_id, worker_result, **kwargs):
     domain = get_config()['domain']
     url = f'{domain}/affiliations/profile/{affiliation_id}'
     html = get(url)
@@ -56,3 +49,7 @@ def worker(affiliation_id, worker_result):
     }
 
     worker_result.append(result_data)
+
+
+if __name__ == '__main__':
+    print(affiliation(404, output_format='json', pretty_print=True))
