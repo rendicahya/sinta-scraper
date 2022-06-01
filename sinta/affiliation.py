@@ -7,12 +7,12 @@ from util.utils import format_output, cast, listify, run_thread
 
 def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
     affiliation_ids = listify(affiliation_ids)
-    worker_result = run_thread(worker, affiliation_ids)
+    result = run_thread(worker, affiliation_ids)
 
-    if len(worker_result) == 1:
-        worker_result = worker_result[0]
+    if len(result) == 1:
+        result = result[0]
 
-    return format_output(worker_result, output_format, pretty_print, xml_library)
+    return format_output(result, output_format, pretty_print, xml_library)
 
 
 def worker(affiliation_id, worker_result, **kwargs):
