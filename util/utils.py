@@ -38,3 +38,15 @@ def cast(string: str):
 
 def listify(param):
     return [param] if type(param) not in [list, tuple] else param
+
+
+def run_thread(worker, iterable, params=None):
+    from concurrent.futures import ThreadPoolExecutor
+
+    worker_result = []
+
+    with ThreadPoolExecutor() as executor:
+        for i in iterable:
+            executor.submit(worker, i, worker_result, params=params)
+
+    return worker_result
