@@ -40,6 +40,10 @@ def listify(param):
     return [param] if type(param) not in [list, tuple] else param
 
 
+def singlify(_list):
+    return _list[0] if len(_list) == 1 else _list
+
+
 def run_thread(worker, iterable, params=None):
     from concurrent.futures import ThreadPoolExecutor
 

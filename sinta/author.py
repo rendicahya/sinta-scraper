@@ -2,15 +2,13 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from util.config import get_config
-from util.utils import format_output, cast, listify, run_thread
+from util.utils import format_output, cast, listify, run_thread, singlify
 
 
 def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
     author_ids = listify(author_ids)
     result = run_thread(worker, author_ids)
-
-    if len(result) == 1:
-        result = result[0]
+    result = singlify(result)
 
     return format_output(result, output_format, pretty_print, xml_library)
 
