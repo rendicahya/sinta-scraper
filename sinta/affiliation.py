@@ -6,14 +6,13 @@ from util.utils import format_output, cast, listify, run_thread, singlify
 
 
 def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
-    affiliation_ids = listify(affiliation_ids)
-    result = run_thread(worker, affiliation_ids)
+    result = run_thread(worker, listify(affiliation_ids))
     result = singlify(result)
 
     return format_output(result, output_format, pretty_print, xml_library)
 
 
-def worker(affiliation_id, worker_result, **kwargs):
+def worker(affiliation_id, worker_result, *args, **kwargs):
     domain = get_config()['domain']
     url = f'{domain}/affiliations/profile/{affiliation_id}'
     html = get(url)

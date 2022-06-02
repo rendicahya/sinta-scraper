@@ -44,13 +44,13 @@ def singlify(_list):
     return _list[0] if len(_list) == 1 else _list
 
 
-def run_thread(worker, iterable, params=None):
+def run_thread(worker, iterable, *args, **kwargs):
     from concurrent.futures import ThreadPoolExecutor
 
     worker_result = []
 
     with ThreadPoolExecutor() as executor:
         for i in iterable:
-            executor.submit(worker, i, worker_result, params=params)
+            executor.submit(worker, i, worker_result, **kwargs)
 
     return worker_result
