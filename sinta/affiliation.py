@@ -23,6 +23,7 @@ def worker(affiliation_id, worker_result, **kwargs):
     name = soup.select('.univ-name > h3')[0].text.strip()
     abbrv_name = soup.select('.affil-abbrev')[0].text.strip()
     location = soup.select('.affil-loc')[0].text.strip()
+    code = soup.select('.affil-code')[0].text.split(':')[-1].strip()
 
     # stats section
     stat_profile = soup.select('.affil-profile-card .stat-num')
@@ -38,6 +39,7 @@ def worker(affiliation_id, worker_result, **kwargs):
 
     result_data = {
         'id': affiliation_id,
+        'code': code,
         'url': url,
         'name': name,
         'abbreviation': abbrv_name,
