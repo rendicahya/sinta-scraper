@@ -116,6 +116,7 @@ Avalable output formats:
 - `'json'`
 - `'json-pretty'`
 - `'xml'`
+- `'xml-flat'`
 
 You can also pretty-print a dictionary using `pprint`:
 
