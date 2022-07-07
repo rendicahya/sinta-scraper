@@ -24,7 +24,7 @@ Dependencies (installed automatically using the above command): `beautifulsoup4`
 
 Retrieves an author's information by Sinta ID. For example:
 
-```
+```python
 author_id = 6082456
 author = sinta.author(author_id)
 
@@ -33,7 +33,7 @@ print(author)
 
 The output format is the Python dictionary. The structure is given in the following sample output.
 
-```
+```python
 {
     "id": 6082456,
     "name": "RANDY CAHYA WIHANDIKA",
@@ -85,12 +85,11 @@ The output format is the Python dictionary. The structure is given in the follow
         "wos": ""
     }
 }
-
 ```
 
 Multiple authors can also be retrieved at once:
 
-```
+```python
 author_ids = 5975467, 6019743
 authors = sinta.author(author_ids)
 ```
@@ -99,7 +98,7 @@ authors = sinta.author(author_ids)
 
 Other formats can be used by specifying the `output_format` argument:
 
-```
+```python
 author = sinta.author(id, output_format='json')
 ```
 
@@ -111,9 +110,16 @@ Avalable output formats:
 - `'xml'`
 - `'xml-pretty'`
 
+You can also pretty-print a dictionary using `pprint`:
+```python
+from pprint import pprint
+
+pprint(result_dict)
+```
+
 Please note that the output is not wrapped in a root element. For example:
 
-```
+```python
 author = sinta.author(id, output_format='xml', xml_library='dict2xml')
 ```
 
