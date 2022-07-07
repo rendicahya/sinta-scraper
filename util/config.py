@@ -1,2 +1,2 @@
 def get_config():
-    return {'domain': 'https://sinta3.kemdikbud.go.id'}
+    return {'domain': 'https://sinta.kemdikbud.go.id'}
