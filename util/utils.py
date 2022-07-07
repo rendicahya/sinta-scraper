@@ -16,7 +16,7 @@ def format_output(data, output_format):
         return dict2xml(data, wrap='author')
     elif output_format == 'xml-flat':
         flat = format_output(data, output_format='dict-flat')
-        return dict2xml(flat, wrap='author')
+        return format_output(flat, output_format='xml')
     else:
         return data
 
