@@ -3,14 +3,14 @@ from requests import get
 
 import sinta
 from util.config import get_config
-from util.utils import format_output, listify, run_thread, singlify, cast
+from util.utils import format_output, listify, run_thread, compact_list, cast
 
 
 def department(department_ids, affiliation_id, output_format='dict'):
     affiliation_code = sinta.affiliation(affiliation_id)['code']
     result = run_thread(worker, listify(department_ids), affiliation_id=affiliation_id,
                         affiliation_code=affiliation_code)
-    result = singlify(result)
+    result = compact_list(result)
 
     return format_output(result, output_format)
 

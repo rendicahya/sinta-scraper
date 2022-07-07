@@ -2,13 +2,13 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from util.config import get_config
-from util.utils import format_output, cast, listify, run_thread, singlify
+from util.utils import format_output, cast, listify, run_thread, compact_list
 
 
 def author(author_ids, output_format='dict'):
     author_ids = listify(author_ids)
     result = run_thread(worker, author_ids)
-    result = singlify(result)
+    result = compact_list(result)
 
     return format_output(result, output_format)
 
