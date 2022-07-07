@@ -5,7 +5,7 @@ from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread, singlify
 
 
-def affiliation(affiliation_ids, output_format='dictionary'):
+def affiliation(affiliation_ids, output_format='dict'):
     result = run_thread(worker, listify(affiliation_ids))
     result = singlify(result)
 

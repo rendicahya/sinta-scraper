@@ -5,7 +5,7 @@ from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread, singlify
 
 
-def author(author_ids, output_format='dictionary'):
+def author(author_ids, output_format='dict'):
     author_ids = listify(author_ids)
     result = run_thread(worker, author_ids)
     result = singlify(result)

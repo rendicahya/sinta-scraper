@@ -6,7 +6,7 @@ from util.config import get_config
 from util.utils import format_output, listify, run_thread, singlify, cast
 
 
-def department(department_ids, affiliation_id, output_format='dictionary'):
+def department(department_ids, affiliation_id, output_format='dict'):
     affiliation_code = sinta.affiliation(affiliation_id)['code']
     result = run_thread(worker, listify(department_ids), affiliation_id=affiliation_id,
                         affiliation_code=affiliation_code)
