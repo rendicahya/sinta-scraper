@@ -2,13 +2,13 @@
 
 # Sinta Scraper
 
-Retrieves information from Sinta (Science and Technology Index, https://sinta.kemdikbud.go.id) via scraping.
+Retrieves information from [Sinta (Science and Technology Index)](https://sinta.kemdikbud.go.id) via scraping.
 
 ## Installation
 
-`pip install sinta3-scraper`
+`pip install sinta-scraper`
 
-Dependencies: `beautifulsoup4`, `requests`, `dicttoxml`, `dict2xml`, and `python-string-utils`.
+Dependencies (installed automatically using the above command): `beautifulsoup4`, `requests`, `dicttoxml`, `dict2xml`, and `python-string-utils`.
 
 ## Importing
 
