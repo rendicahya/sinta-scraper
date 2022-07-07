@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from requests import get
-from datetime import datetime
+
 from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread, singlify
 
@@ -54,11 +54,9 @@ def worker(affiliation_id, worker_result, *args, **kwargs):
                       'url': url,
                       'name': name,
                       'abbreviation': abbrv_name,
-                      'location': location
-                  } | stats | index_stats | \
-                  {
+                      'location': location,
                       'sinta_score': sinta_scores,
                       'last_update': last_update
-                  }
+                  } | stats | index_stats
 
     worker_result.append(result_data)
