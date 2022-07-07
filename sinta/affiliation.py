@@ -31,10 +31,10 @@ def worker(affiliation_id, worker_result, *args, **kwargs):
     stats = dict(zip(stat_names, stat_int))
 
     # sinta score section
-    scores = soup.select('.stat-profile .pr-num')
-    scores_names = 'overall', '3_years', 'productivity', 'productivity_3_years'
-    scores_int = [cast(scores[i].text.replace('.', '')) for i in range(4)]
-    sinta_scores = dict(zip(scores_names, scores_int))
+    score_soup = soup.select('.stat-profile .pr-num')
+    score_names = 'overall', '3_years', 'productivity', 'productivity_3_years'
+    score_numbers = [cast(score_soup[i].text.replace('.', '')) for i in range(4)]
+    sinta_scores = dict(zip(score_names, score_numbers))
 
     # indexer section
     index_stats = {}
