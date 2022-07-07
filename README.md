@@ -34,58 +34,25 @@ print(author)
 
 The output format is the Python dictionary. The structure is given in the following sample output.
 
-```json
-{
-    "id": 6082456,
-    "name": "RANDY CAHYA WIHANDIKA",
-    "url": "https://sinta3.kemdikbud.go.id/authors/profile/6082456",
-    "affiliation": {
-        "id": 404,
-        "name": "Universitas Brawijaya",
-        "url": "https://sinta3.kemdikbud.go.id/affiliations/profile/404"
-    },
-    "department": "S1 - Teknik Informatika",
-    "subjects": [
-        "Image Processing",
-        "Computer Vision"
-    ],
-    "score": {
-        "overall": 449,
-        "3_years": 122,
-        "affiliation": 0,
-        "affiliation_3_years": 0
-    },
-    "articles": {
-        "scopus": 14,
-        "scholar": 103,
-        "wos": 0
-    },
-    "citations": {
-        "scopus": 52,
-        "scholar": 266,
-        "wos": 0
-    },
-    "cited_docs": {
-        "scopus": 9,
-        "scholar": 0,
-        "wos": 0
-    },
-    "h-index": {
-        "scopus": 4,
-        "scholar": 9,
-        "wos": ""
-    },
-    "i10-index": {
-        "scopus": 1,
-        "scholar": 9,
-        "wos": ""
-    },
-    "g-index": {
-        "scopus": 1,
-        "scholar": 1,
-        "wos": ""
-    }
-}
+```python
+{'affiliation': {'id': 404,
+                 'name': 'Universitas Brawijaya',
+                 'url': 'https://sinta.kemdikbud.go.id/affiliations/profile/404'},
+ 'articles': {'scholar': 103, 'scopus': 14, 'wos': 0},
+ 'citations': {'scholar': 266, 'scopus': 52, 'wos': 0},
+ 'cited_docs': {'scholar': 0, 'scopus': 9, 'wos': 0},
+ 'department': 'S1 - Teknik Informatika',
+ 'g-index': {'scholar': 1, 'scopus': 1, 'wos': ''},
+ 'h-index': {'scholar': 9, 'scopus': 4, 'wos': ''},
+ 'i10-index': {'scholar': 9, 'scopus': 1, 'wos': ''},
+ 'id': 6082456,
+ 'name': 'RANDY CAHYA WIHANDIKA',
+ 'score': {'3_years': 122,
+           'affiliation': 0,
+           'affiliation_3_years': 0,
+           'overall': 451},
+ 'subjects': ['Image Processing', 'Computer Vision'],
+ 'url': 'https://sinta.kemdikbud.go.id/authors/profile/6082456'}
 ```
 
 Multiple authors can also be retrieved at once:
