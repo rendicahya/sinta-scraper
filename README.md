@@ -17,6 +17,7 @@ Dependencies (installed automatically using the above command): `beautifulsoup4`
 ## Available Functions
 
 - [`author()`](#author)
+- [`affiliation()`](#affiliation)
 
 ## Function Details
 
@@ -92,6 +93,44 @@ Multiple authors can also be retrieved at once:
 ```python
 author_ids = 5975467, 6019743
 authors = sinta.author(author_ids)
+```
+
+- ### `affiliation()`
+
+Retrieves information about an affiliation. For example:
+
+```python
+affiliation_id = 404
+affiliation_info = sinta.affiliation(affiliation_id)
+```
+
+Output:
+
+```python
+{'abbreviation': 'UB',
+ 'articles': {'garuda': 8783, 'scholar': 100142, 'scopus': 9181, 'wos': 1260},
+ 'authors': 2330,
+ 'citation_per_researcher': {'garuda': 0.46,
+                             'scholar': 462.17,
+                             'scopus': 49.15,
+                             'wos': 7.96},
+ 'citations': {'garuda': 428, 'scholar': 431668, 'scopus': 45910, 'wos': 7432},
+ 'cited_documents': {'garuda': 265,
+                     'scholar': 44142,
+                     'scopus': 5622,
+                     'wos': 778},
+ 'code': '001019',
+ 'departments': 177,
+ 'id': 404,
+ 'journals': 67,
+ 'last_update': '2022-06-15 09:00:53',
+ 'location': 'KOTA MALANG - JAWA TIMUR, ID',
+ 'name': 'Universitas Brawijaya',
+ 'sinta_score': {'3_years': 220241,
+                 'overall': 568684,
+                 'productivity': 277,
+                 'productivity_3_years': 107},
+ 'url': 'https://sinta.kemdikbud.go.id/affiliations/profile/404'}
 ```
 
 ## Other Output Formats
