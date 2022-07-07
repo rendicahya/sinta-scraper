@@ -125,7 +125,7 @@ author = sinta.author(id, output_format='xml', xml_library='dict2xml')
 
 Output:
 
-```
+```xml
 <affiliation>
   <id>417</id>
   <name>Institut Teknologi Sepuluh Nopember</name>
