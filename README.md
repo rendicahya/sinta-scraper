@@ -33,7 +33,7 @@ print(author)
 
 The output format is the Python dictionary. The structure is given in the following sample output.
 
-```python
+```json
 {
     "id": 6082456,
     "name": "RANDY CAHYA WIHANDIKA",
