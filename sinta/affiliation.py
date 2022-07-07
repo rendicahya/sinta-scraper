@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from requests import get
-
+from datetime import datetime
 from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread, singlify
 
@@ -42,6 +42,8 @@ def worker(affiliation_id, worker_result, *args, **kwargs):
     index_aspects = 'articles', 'citations', 'cited_documents', 'citation_per_researcher'
     indexers = 'scopus', 'scholar', 'wos', 'garuda'
 
+    last_update = soup.select('small')[-1].text.split(' :')[1]
+
     for i, row in enumerate(index_rows):
         numbers = [cast(row.select('td')[i].text.replace('.', '').replace(',', '.')) for i in range(1, 5)]
         index_stats[index_aspects[i]] = dict(zip(indexers, numbers))
@@ -53,6 +55,10 @@ def worker(affiliation_id, worker_result, *args, **kwargs):
                       'name': name,
                       'abbreviation': abbrv_name,
                       'location': location
-                  } | stats | index_stats | {'sinta_score': sinta_scores}
+                  } | stats | index_stats | \
+                  {
+                      'sinta_score': sinta_scores,
+                      'last_update': last_update
+                  }
 
     worker_result.append(result_data)
