@@ -8,8 +8,7 @@ Retrieves information from [Sinta (Science and Technology Index)](https://sinta.
 
 `pip install sinta-scraper`
 
-Dependencies (installed automatically using the above command): `beautifulsoup4`, `requests`, `dicttoxml`, `dict2xml`,
-and `python-string-utils`.
+Dependencies (installed automatically using the above command): `beautifulsoup4`, `requests`, `dicttoxml`, `dict2xml`, `python-string-utils`, and `flatdict`.
 
 ## Importing
 
