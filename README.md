@@ -2,7 +2,7 @@
 
 # Sinta Scraper
 
-Retrieves information from Sinta 3 (https://sinta3.kemdikbud.go.id) via scraping.
+Retrieves information from Sinta (Science and Technology Index, https://sinta.kemdikbud.go.id) via scraping.
 
 ## Installation
 
