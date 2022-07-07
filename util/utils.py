@@ -1,18 +1,21 @@
 import json
 
 from dict2xml import dict2xml
+from flatdict import FlatDict
 from string_utils.validation import is_integer, is_decimal
 
 
-def format_output(obj, output_format):
-    if output_format == 'json':
-        return json.dumps(obj)
+def format_output(data, output_format):
+    if output_format == 'dict-flat':
+        return dict(FlatDict(data, delimiter='.'))
+    elif output_format == 'json':
+        return json.dumps(data)
     elif output_format == 'json-pretty':
-        return json.dumps(obj, indent=4)
+        return json.dumps(data, indent=4)
     elif output_format == 'xml':
-        return dict2xml(obj, wrap='author')
+        return dict2xml(data, wrap='author')
     else:
-        return obj
+        return data
 
 
 def cast(string: str):

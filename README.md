@@ -112,6 +112,7 @@ author = sinta.author(id, output_format='json')
 Avalable output formats:
 
 - `'dict'` (default)
+- `'dict-flat'`
 - `'json'`
 - `'json-pretty'`
 - `'xml'`
