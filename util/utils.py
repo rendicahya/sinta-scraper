@@ -1,6 +1,5 @@
 import json
 
-import pandas as pd
 from dict2xml import dict2xml
 from string_utils.validation import is_integer, is_decimal
 
@@ -14,8 +13,6 @@ def format_output(obj, output_format):
         return dict2xml(obj, wrap='author')
     elif output_format == 'xml-pretty':
         return dict2xml(obj, wrap='author', indent='    ')
-    elif output_format == 'dataframe':
-        return pd.DataFrame.from_dict(obj)
     else:
         return obj
 
