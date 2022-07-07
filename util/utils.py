@@ -1,29 +1,26 @@
-def format_output(obj, output_format, pretty_print, xml_library):
-    import json
-    from dict2xml import dict2xml
-    from dicttoxml import dicttoxml
+import json
 
+import pandas as pd
+from dict2xml import dict2xml
+from string_utils.validation import is_integer, is_decimal
+
+
+def format_output(obj, output_format):
     if output_format == 'json':
-        json_indent = 4 if pretty_print else None
-        output = json.dumps(obj, indent=json_indent)
+        return json.dumps(obj)
+    elif output_format == 'json-pretty':
+        return json.dumps(obj, indent=4)
     elif output_format == 'xml':
-        if pretty_print:
-            output = dict2xml(obj, wrap='author', indent='    ')
-        elif xml_library == 'dict2xml':
-            output = dict2xml(obj)
-        elif xml_library == 'dicttoxml':
-            output = dicttoxml(obj)
-        else:
-            output = dict2xml(obj)
+        return dict2xml(obj, wrap='author')
+    elif output_format == 'xml-pretty':
+        return dict2xml(obj, wrap='author', indent='    ')
+    elif output_format == 'dataframe':
+        return pd.DataFrame.from_dict(obj)
     else:
-        output = obj
-
-    return output
+        return obj
 
 
 def cast(string: str):
-    from string_utils.validation import is_integer, is_decimal
-
     string = string.strip()
 
     if is_integer(string):

@@ -5,12 +5,12 @@ from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread, singlify
 
 
-def author(author_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
+def author(author_ids, output_format='dictionary'):
     author_ids = listify(author_ids)
     result = run_thread(worker, author_ids)
     result = singlify(result)
 
-    return format_output(result, output_format, pretty_print, xml_library)
+    return format_output(result, output_format)
 
 
 def worker(author_id, worker_result, **kwargs):

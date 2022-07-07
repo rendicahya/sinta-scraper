@@ -6,13 +6,13 @@ from util.config import get_config
 from util.utils import format_output, listify, run_thread, singlify, cast
 
 
-def department(department_ids, affiliation_id, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
+def department(department_ids, affiliation_id, output_format='dictionary'):
     affiliation_code = sinta.affiliation(affiliation_id)['code']
     result = run_thread(worker, listify(department_ids), affiliation_id=affiliation_id,
                         affiliation_code=affiliation_code)
     result = singlify(result)
 
-    return format_output(result, output_format, pretty_print, xml_library)
+    return format_output(result, output_format)
 
 
 def worker(department_id, worker_result, *args, **kwargs):
@@ -41,9 +41,3 @@ def worker(department_id, worker_result, *args, **kwargs):
     }
 
     worker_result.append(result_data)
-
-
-if __name__ == '__main__':
-    res = department(55201, 404, output_format='json', pretty_print=True)
-
-    print(res)

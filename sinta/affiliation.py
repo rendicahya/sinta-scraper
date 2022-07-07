@@ -5,11 +5,11 @@ from util.config import get_config
 from util.utils import format_output, cast, listify, run_thread, singlify
 
 
-def affiliation(affiliation_ids, output_format='dictionary', pretty_print=None, xml_library='dicttoxml'):
+def affiliation(affiliation_ids, output_format='dictionary'):
     result = run_thread(worker, listify(affiliation_ids))
     result = singlify(result)
 
-    return format_output(result, output_format, pretty_print, xml_library)
+    return format_output(result, output_format)
 
 
 def worker(affiliation_id, worker_result, *args, **kwargs):
