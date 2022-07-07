@@ -14,6 +14,9 @@ def format_output(data, output_format):
         return json.dumps(data, indent=4)
     elif output_format == 'xml':
         return dict2xml(data, wrap='author')
+    elif output_format == 'xml-flat':
+        flat = format_output(data, output_format='dict-flat')
+        return dict2xml(flat, wrap='author')
     else:
         return data
 
