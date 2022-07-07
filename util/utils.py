@@ -34,11 +34,11 @@ def cast(string: str):
         return string
 
 
-def listify(val):
+def listify(val) -> list:
     return [val] if type(val) not in (list, tuple) else val
 
 
-def compact_list(_list):
+def compact_list(_list: list):
     return _list[0] if len(_list) == 1 else _list
 
 
