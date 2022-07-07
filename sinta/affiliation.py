@@ -28,23 +28,31 @@ def worker(affiliation_id, worker_result, *args, **kwargs):
     stat_profile = soup.select('.affil-profile-card .stat-num')
     stat_names = 'authors', 'departments', 'journals'
     stat_int = [cast(stat_profile[i].text.replace('.', '')) for i in range(3)]
-    stat = dict(zip(stat_names, stat_int))
+    stats = dict(zip(stat_names, stat_int))
 
     # sinta score section
     scores = soup.select('.stat-profile .pr-num')
     scores_names = 'overall', '3_years', 'productivity', 'productivity_3_years'
     scores_int = [cast(scores[i].text.replace('.', '')) for i in range(4)]
-    scores = dict(zip(scores_names, scores_int))
+    sinta_scores = dict(zip(scores_names, scores_int))
+
+    # indexer section
+    index_stats = {}
+    index_rows = soup.select('.stat-table > tbody > tr')
+    index_aspects = 'articles', 'citations', 'cited_documents', 'citation_per_researcher'
+    indexers = 'scopus', 'scholar', 'wos', 'garuda'
+
+    for i, row in enumerate(index_rows):
+        numbers = [cast(row.select('td')[i].text.replace('.', '').replace(',', '.')) for i in range(1, 5)]
+        index_stats[index_aspects[i]] = dict(zip(indexers, numbers))
 
     result_data = {
-        'id': affiliation_id,
-        'code': code,
-        'url': url,
-        'name': name,
-        'abbreviation': abbrv_name,
-        'location': location,
-        'stats': stat,
-        'sinta_score': scores
-    }
+                      'id': affiliation_id,
+                      'code': code,
+                      'url': url,
+                      'name': name,
+                      'abbreviation': abbrv_name,
+                      'location': location
+                  } | stats | index_stats | {'sinta_score': sinta_scores}
 
     worker_result.append(result_data)
