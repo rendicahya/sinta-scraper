@@ -11,8 +11,6 @@ def format_output(obj, output_format):
         return json.dumps(obj, indent=4)
     elif output_format == 'xml':
         return dict2xml(obj, wrap='author')
-    elif output_format == 'xml-pretty':
-        return dict2xml(obj, wrap='author', indent='    ')
     else:
         return obj
 
