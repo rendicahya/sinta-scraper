@@ -15,7 +15,7 @@ def department(department_ids, affiliation_id, output_format='dict'):
     return format_output(result, output_format)
 
 
-def worker(department_id, worker_result, *args, **kwargs):
+def worker(department_id, worker_result, **kwargs):
     affiliation_id = kwargs['affiliation_id']
     affiliation_code = kwargs['affiliation_code']
     domain = get_config()['domain']

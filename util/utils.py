@@ -46,7 +46,7 @@ def singlify(val):
     return val[0] if type(val) in (list, tuple) else val
 
 
-def run_thread(worker, iterable, *args, **kwargs):
+def run_thread(worker, iterable, **kwargs):
     from concurrent.futures import ThreadPoolExecutor
 
     worker_result = []

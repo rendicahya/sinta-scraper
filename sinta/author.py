@@ -13,7 +13,7 @@ def author(author_ids, output_format='dict'):
     return format_output(result, output_format)
 
 
-def worker(author_id, worker_result, **kwargs):
+def worker(author_id, worker_result):
     domain = get_config()['domain']
     url = f'{domain}/authors/profile/{author_id}'
     html = get(url)

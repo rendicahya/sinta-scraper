@@ -12,7 +12,7 @@ def affiliation(affiliation_ids, output_format='dict'):
     return format_output(result, output_format)
 
 
-def worker(affiliation_id, worker_result, *args, **kwargs):
+def worker(affiliation_id, worker_result):
     domain = get_config()['domain']
     url = f'{domain}/affiliations/profile/{affiliation_id}'
     html = BeautifulSoup(get(url).content, 'html.parser')
