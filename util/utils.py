@@ -5,7 +5,7 @@ from flatdict import FlatDict
 from string_utils.validation import is_integer, is_decimal
 
 
-def format_output(data, output_format):
+def format_output(data, output_format: str):
     if output_format == 'dict-flat':
         return dict(FlatDict(data, delimiter='.'))
     elif output_format == 'json':
@@ -49,10 +49,10 @@ def singlify(val):
 def run_thread(worker, iterable, **kwargs):
     from concurrent.futures import ThreadPoolExecutor
 
-    worker_result = []
+    result = []
 
     with ThreadPoolExecutor() as executor:
         for i in iterable:
-            executor.submit(worker, i, worker_result, **kwargs)
+            executor.submit(worker, i, result, **kwargs)
 
-    return worker_result
+    return result
