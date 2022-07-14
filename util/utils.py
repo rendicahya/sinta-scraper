@@ -1,13 +1,13 @@
 import json
 
 from dict2xml import dict2xml
-from flatdict import FlatDict
+from flatdict import FlatterDict
 from string_utils.validation import is_integer, is_decimal
 
 
 def format_output(data, output_format: str):
     if output_format == 'dict-flat':
-        return dict(FlatDict(data, delimiter='.'))
+        return dict(FlatterDict(data, delimiter='.'))
     elif output_format == 'json':
         return json.dumps(data)
     elif output_format == 'json-pretty':
